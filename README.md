@@ -25,6 +25,7 @@
 * コメント編集機能
 * コメント削除機能
 * facebookログイン機能
+* ランキング機能
 
 ## カタログ設計
 https://docs.google.com/spreadsheets/d/1huS7Db3wd4Gm_G7vCm_dJsI79LNJB0fCDE476KuLmFk/edit#gid=0
