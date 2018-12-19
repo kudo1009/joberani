@@ -1,0 +1,31 @@
+<% unless comments.present? %>
+  <h>コメントはまだありません。気軽にコメントしてみましょう！</p>
+<% end %>
+<% comments.each do |comment| %>
+  <% unless comment.id.nil? %>
+    <div class="card one-comment">
+      <div class="card-body comment-space">
+        <p class="comment-name">
+          <% if comment.user.image.present? %>
+            <%= link_to user_path(comment.user.id), style: "background: transparent" do %>
+              <%= image_tag comment.user.image,:size =>'60x60'%>
+            <% end %>
+          <% else %>
+            <%= link_to user_path(comment.user.id), style: "background: transparent" do %>
+              <%= image_tag '/user.png',:size =>'60x60' %>
+            <% end %>
+          <% end %>
+          <%= link_to "#{comment.user.name}さん", user_path(comment.user.id) %>
+        </p>
+        <div>
+          <%= comment.opinion %>
+          <% if comment.user == current_user %>
+            <p class="comment-delete"><%= link_to post_comment_path(comment.post_id, comment.id), method: :delete, remote: true do %>
+              <i class="fa fa-trash fa-fw"></i> 削除
+            <% end %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

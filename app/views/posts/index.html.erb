@@ -1,0 +1,51 @@
+<div class="body-full">
+  <div class="container-fluid index-body">
+    <div class="row">
+      <!-- 投稿一覧 -->
+      <div id="main" class="col-sm-12 col-md-8">
+        <div class="main-body">
+          <div>
+            <h2>投稿一覧</h2>
+          </div>
+          <% unless @posts.present? %>
+            <p>投稿はまだありません。</p>
+          <% end %>
+          <%= render partial: "advice", locals: {posts: @posts} %>
+        </div>
+        <!-- 投稿一覧終了 -->
+        <%= paginate @posts %>
+      </div>
+      <!-- お気に入りが多い投稿一覧 -->
+      <div id="side" class="col-sm-12 col-md-4">
+        <div class="rank-box">
+          <div>
+          <span class="rank-box-title"><i class="fa fa-star notfavorite-btn"></i>お気に入りランキング</span>
+          <p>お気に入り登録が多い投稿が表示されます。</p>
+          </div>
+          <div class="not-under">
+            <% @favorite_ranking.each.with_index(1) do |post, i| %>
+              <%= link_to post do %>
+                <div class ="rank">
+                  <table class="table table-sm">
+                    <tbody>
+                      <tr>
+                        <td class="border-top-0"><%= i %>位　<%= post.user.name %></td>
+                      </tr>
+                      <tr>
+                        <td class="border-top-0"><%= post.company %></td>
+                      </tr>
+                      <tr>
+                        <td class="border-top-0"><%= post.industry %></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <!-- お気に入りが多い投稿一覧終了 -->
+    </div>
+  </div>
+</div>

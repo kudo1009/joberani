@@ -1,0 +1,28 @@
+<div class="not-under">
+  <% @posts.each do |post| %>
+    <%= link_to post do %>
+      <div class ="card switch">
+        <div class ="card-body post-index-body">
+          <table class="table table-responsive table-sm post-index">
+            <tbody>
+              <tr>
+                <td class="border-top-0" rowspan="2">
+                  <% if post.user.image.present? %>
+                    <%= image_tag post.user.image %>
+                  <% else %>
+                    <%= image_tag '/user.png' %>
+                  <% end %>
+                </td>
+                <td class="border-top-0"><%= post.user.name %></td>
+              </tr>
+              <tr>
+                <td class="border-top-0"><strong>　<%= post.company %>　/　<%= post.industry %></strong></td>
+              </tr>
+            </tbody>
+          </table>
+          <small><i class="fa fa-star notfavorite-btn"></i>お気に入り！ <%= post.favorites.count %>件　<i class="fa fa-comment fa-fw"></i>コメント <%= post.comments.count %>件</small>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

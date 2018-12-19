@@ -1,0 +1,79 @@
+<div class="top-wrapper">
+  <div class="container">
+    <h1>Joberani</h1>
+    <p>Joberaniは障害者と働いたことがある人の口コミ共有サイトです。</p>
+    <p>一緒に働いたあの人とのエピソードを共有してみませんか？</p>
+    <div class="btn-wrapper">
+      <% if user_signed_in? %>
+        <a href="/posts" class="btn signup">投稿一覧</a>
+      <% else %>
+        <a href="/users/sign_up" class="btn signup">新規登録はこちら</a>
+      <% end %>
+    </div>
+  </div>
+</div>
+<section id= "about">
+ <div class="intro-wrapper">
+  <div class="container">
+    <div class="heading">
+      <h2>Joberaniとは？</h2>
+    </div>
+    <div class="intros">
+      <div class="intro">
+        <div class="intro-icon">
+          <i class="fa fa-info-circle" id="fa-intro"></i>
+          <p>Joberaniの意味</p>
+        </div>
+        <p class="fa fa-circle txt-contents">名前のJoberaniとは英語のJobとマレーシア語のBerani(勇気)を合わせた造語。ジョブラニと発音する。</p>
+      </div>
+      <div class="intro">
+        <div class="intro-icon">
+          <i class="fa fa-lightbulb-o" id="fa-intro"></i>
+          <p>目的</p>
+        </div>
+        <p class="fa fa-circle txt-contents">障害者と働いたことがある人がノウハウを共有し、
+        これから一緒に働く予定の人や一緒に働いていて接し方がわからず悩んでいる人の手助けになること。</p>
+      </div>
+      <div class="intro">
+        <div class="intro-icon">
+          <i class="fa fa-user-plus" id="fa-intro"></i>
+          <p>なぜ障害者？</p>
+        </div>
+        <p class="fa fa-circle txt-contents">人手不足が叫ばれているのに障害者雇用水増し問題が発生した。関わり方を知っていれば障害者の雇用の促進につながるはずだ。</p>
+        
+      </div>
+      <div class="intro">
+        <div class="intro-icon">
+          <i class="fa fa-check-circle" id="fa-intro"></i>
+          <p>設立経緯</p>
+        </div>
+        <p class=" fa fa-circle txt-contents">私の身内にも障害者がいる。
+        関わる機会がある人が「こういう工夫があれば問題なく働ける」ということを共有するため。</p>
+      </div>
+    </div>
+  </div>
+ </div>
+</section> 
+<div class="message-wrapper">
+  <div class="container">
+    <% if user_signed_in? %>
+      <div class="heading">
+        <h2>投稿をする</h2>
+        <h3>みんなに経験をシェアしませんか？<br>
+        あなたの経験が誰かの役に立つかもしれません！
+        </h3>
+        
+      </div>
+      <a class="btn message" href="/posts/new">投稿する</a>
+      <a class="btn message" href="/posts">投稿一覧を見てみる</a>
+    <% else %>
+      <div class="heading">
+        <h2>無料会員登録</h2>
+        <h3>会員登録をすると投稿ができるようになります。<br>
+        会員にならなくても投稿一覧は見れます。</h3>
+      </div>
+      <a class="btn message" href="/users/sign_up">新規登録はこちら</a>
+      <a class="btn message" href="/posts">投稿一覧を見てみる</a>
+    <% end %>
+  </div>
+</div>

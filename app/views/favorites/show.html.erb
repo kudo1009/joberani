@@ -1,0 +1,26 @@
+<div class="main user-show">
+  <div class="container">
+    <div class="user">
+      <%= image_tag @user.image %><br>
+      <h2><%= @user.name %></h2>
+      <p><%= @user.email %></p>
+    </div>
+    
+    <ul class="user-tabs">
+      <%= link_to favorite_path(current_user.id), method: :get do %>
+       <i class="fa fa-star notfavorite-btn"></i> お気に入り
+      <% end %>
+    </ul>
+    
+    <% @favorite_posts.each do |favorite_post| %>
+      <div class="posts-index-item">
+        <div class="post-right">
+          <div class="post-user-name">
+            <%= link_to favorite_post.user.name, user_path(favorite_post.user.id) %>
+          </div>
+          <%= link_to favorite_post.content, post_path(favorite_post.id) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
