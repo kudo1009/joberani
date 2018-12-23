@@ -4,7 +4,8 @@ Rails.application.configure do
 
   config.eager_load = false
 
-  config.consider_all_requests_local = true
+  #config.consider_all_requests_local = true
+  config.consider_all_requests_local = false
 
   if Rails.root.join('tmp/caching-dev.txt').exist?
     config.action_controller.perform_caching = true
@@ -20,7 +21,6 @@ Rails.application.configure do
   end
   
   # deviseのメール送信機能
-  #config.action_mailer.default_url_options = { host: 'dive-into-code-malaskohei.c9users.io/' }
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # レターオープナー
   config.action_mailer.default_url_options = { host: 'localhost3000' }

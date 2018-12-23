@@ -1,14 +1,15 @@
 <div class="main posts-show">
   <div class="container">
     <div class="posts-show-item">
-      
       <table>
           <tr>
-            <td>投稿者</td>
+            <td><strong>投稿者</strong></td>
           </tr>
           <tr>
-            <td colspan="2" class="user-image">
-              <%= link_to @user.name, user_path(@user.id) %>
+            <td colspan="2">
+              <div class="pname">
+                <%= @user.name %>
+              </div>
               <% if @user.image.present? %>
                 <%= image_tag @user.image %>
               <% else %>
@@ -17,36 +18,36 @@
             </td>
           </tr>
           <tr>
-            <td>会社名</td>
+            <td><strong>会社名</strong></td>
           </tr>
           <tr>
             <td><%= @post.company %></td>
           </tr>
           <tr>
-            <td>業種</td>
+            <td><strong>業種</strong></td>
           </tr>
           <tr>
             <td><%= @post.industry %></td>
           </tr>
-            <td>一緒に働いていた期間</td>
+            <td><strong>一緒に働いていた期間</strong></td>
           </tr>
           <tr>
             <td><%= @post.period %></td>
           </tr>
           <tr>
-            <td>どのような人と一緒に働いていましたか？</td>
+            <td><strong>どのような人と一緒に働いていましたか？</strong></td>
           </tr>
           <tr>
             <td><%= @post.content %></td>
           </tr>
           <tr>
-            <td>大変だったことや気を付けたことはありますか？</td>
+            <td><strong>大変だったことや気を付けたことはありますか？</strong></td>
           </tr>
           <tr>
             <td><%= @post.matter %></td>
           </tr>
           <tr>
-            <td>これから一緒に働く人向けにアドバイスはありますか？</td>
+            <td><strong>これから一緒に働く人向けにアドバイスはありますか？</strong></td>
           </tr>
           <tr>
             <td><%= @post.episode %></td>
@@ -65,7 +66,7 @@
         <% if @post.user_id == current_user.id %>
           <div class="post-menus">
             <%= link_to '編集', edit_post_path(@post.id) %>
-            <%= link_to '削除', post_path(@post.id),method: :delete, data: { confirm: "削除してよろしいですか？","commit" => "削除する","cancel" => "やっぱりやめる", title: "ご確認ください" } %>
+            <%= link_to '削除', post_path(@post.id),method: :delete, data: { confirm: "削除してよろしいですか？", commit: "削除する", cancel: "やっぱりやめる", title: "ご確認ください" } %>
           </div>
         <% end %>
       <% end %>

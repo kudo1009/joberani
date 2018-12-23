@@ -17,8 +17,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by(id: params[:id])
     @user = User.find_by(id: @post.user_id)
-    #@user = User.find_by(id: @post.user_id)
-    @favorite = @current_user.favorites.find_by(post_id: @post.id) if user_signed_in?
+    @favorite = current_user.favorites.find_by(post_id: @post.id) if user_signed_in?
     @favorites_count = Favorite.where(post_id: @post.id).count
     @comment = Comment.new
     @comments = @post.comments

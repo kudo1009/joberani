@@ -2,18 +2,19 @@
   <% unless @post.user_id == current_user.id %>
     <% if @favorite.present? %>
       <div class="fav-now floats">
-        <%= link_to favorite_path(post_id: @post.id, id: @favorite.id), method: :delete, remote: true do %>
+        <%= link_to favorite_path(id: @favorite.id), method: :delete, remote: true do %>
+        お気に入りから外す
           <i class="fa fa-star fa-2x fav-now notfavorite-btn"></i>
         <% end %>
-        お気に入り！<%= @favorites_count %>件
       </div>
     <% else %>
       <div class="fav-not floats">
         <%= link_to favorites_path(post_id: @post.id), method: :post, remote: true do %>
+        お気に入りに登録する
           <i class="fa fa-star favorite-btn"></i>
         <% end %>
-        お気に入り！<%= @favorites_count %>件
       </div>
     <% end %>
   <% end %>
 <% end %>
+お気に入り！<%= @favorites_count %>件

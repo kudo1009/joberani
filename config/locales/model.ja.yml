@@ -2,7 +2,7 @@ ja:
   activerecord:
     models:
       blog: "ブログ"
-      post: "ユーザー"
+      post: "投稿"
     attributes:
       blog:
         title: "タイトル"

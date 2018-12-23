@@ -7,7 +7,6 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
     @posts = @user.posts
-    #@favorite_posts = @user.favorite_posts
     @favorite_posts = Post.find(Favorite.find(@user.favorites.ids).pluck(:post_id))
   end
   

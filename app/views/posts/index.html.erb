@@ -26,19 +26,24 @@
             <% @favorite_ranking.each.with_index(1) do |post, i| %>
               <%= link_to post do %>
                 <div class ="rank">
-                  <table class="table table-sm">
+                  <table class="table table-sm rank-card">
                     <tbody>
                       <tr>
-                        <td class="border-top-0"><%= i %>位　<%= post.user.name %></td>
+                        <td class="border-top-0" rowspan="2">
+                          <% if post.user.image.present? %>
+                            <%= image_tag post.user.image %>
+                          <% else %>
+                            <%= image_tag '/user.png' %>
+                          <% end %>
+                        </td>
+                        <td class="border-top-0"><%= i %>位  名前:<%= post.user.name %></td>
                       </tr>
                       <tr>
-                        <td class="border-top-0"><%= post.company %></td>
-                      </tr>
-                      <tr>
-                        <td class="border-top-0"><%= post.industry %></td>
+                        <td class="border-top-0"><strong><%= post.content %></strong></td>
                       </tr>
                     </tbody>
                   </table>
+                  <small><i class="fa fa-star notfavorite-btn"></i>お気に入り！ <%= post.favorites.count %>件　<i class="fa fa-comment fa-fw"></i>コメント <%= post.comments.count %>件</small>
                 </div>
               <% end %>
             <% end %>

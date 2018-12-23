@@ -5,14 +5,6 @@
   box-shadow: 0 2px 6px #c1ced7;
 }
 
-.post-left img {
-  width: 50px;
-  height: 50px;
-  border-radius: 40%;
-  box-shadow: 0 2px 6px #c1ced7;
-  object-fit: cover;
-}
-
 .post-user-name a {
   font-weight: 600;
 }
@@ -33,7 +25,6 @@
   text-align: left;
 }
 
-/* posts/show ================================ */
 .posts-show form {
   display: inline;
 }
@@ -43,6 +34,9 @@
   background-color: white;
   box-shadow: 0 2px 6px #c1ced7;
   overflow: hidden;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .posts-show-item img {
@@ -80,7 +74,7 @@
   font-size: 14px;
 }
 
-/* posts/new ================================ */
+
 .posts-new textarea {
   font-size: 20px;
   padding: 10px;
@@ -167,6 +161,7 @@ td {
   background: white;
   border: solid 5px #FFD700;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.22);
+  margin-top: 10px;
 }
 
 .rank:hover{
@@ -203,20 +198,6 @@ td {
     margin-left: auto;
 }
 
-.index-body {
-    padding: 1rem;
-    background: #F7F8F9;
-}
-
-.card-body {
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    padding: 1.25rem;
-}
-.post-index-body {
-    padding: 0.8rem;
-}
 .body-full{
   margin: 5px;
 }
@@ -228,12 +209,15 @@ td {
   width: 40%;
   float: right;
   margin-top: 30px;
+  margin-bottom: 80px;
+  
 }
 
 #main {
   width: 60%;
   float: left;
   margin-top: 30px;
+  margin-bottom: 80px;
 }
 
 .not-under img {
@@ -260,20 +244,32 @@ td {
     background-clip: border-box;
     border: 1px solid rgba(0,0,0,0.125);
     border-radius: .25rem;
-    width: 100%;
-}
-
-.switch {
-    padding: 0.5em 1em;
-    margin: 2em 0;
-    color: #5d627b;
-    background: white;
-    border: solid 5px #1F2125;
+    padding-top: 30px;
+    margin-bottom: 20px;
+    width: 80%;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.22);
 }
+
+
 .card:hover{
   opacity: .7;
 }
 
+.post-card {
+  width: 90%;
+  margin-bottom: 15px;
+}
 
+.rank-card {
+  width: 90%;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
 
+.pname {
+  float: center;
+  font-size: 40px;
+  margin-top: 40px;
+  margin-right: 300px;
+  float: right;
+}

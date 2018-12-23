@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   end
   # deviseではshowのルーティングがない
   resources :users, only: [:show]
-  resources :favorites, only: [:create, :destroy, :show]
+  resources :favorites, only: [:create, :destroy]
 
 end

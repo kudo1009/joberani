@@ -5,15 +5,15 @@
     <div class="user">
       <table class="table table-striped table-bordered">
         <tr>
-          <td colspan="2">名前  <%= @user.name %></td>
-        </tr>
-        <tr>
           <td colspan="2">
             <% if @user.image.present? %>
               <%= image_tag @user.image %>
             <% else %>
               <%= image_tag '/user.png' %>
             <% end %>
+            <div class="sname">
+              <%= @user.name %>
+            </div>
           </td>
         </tr>
         <tr>
@@ -37,7 +37,8 @@
       </table>
       <% unless current_user == nil %>
         <% if @user.id == current_user.id %>
-          <%= link_to edit_user_registration_path(@user) do %>編集
+          <%= link_to edit_user_registration_path(@user) do %>
+          プロフィールを編集
           <% end %>
         <% end %>
       <% end %>
@@ -48,18 +49,26 @@
         <p><%= @user.name %>さんの投稿はまだありません。</p>
         <% if current_user.present? %>
           <% if @user.id == current_user.id %>
-            <p>投稿してみましょう！➡︎ <%= link_to "投稿はこちらから", new_post_path, class: "standard-button" %></p>
+            <strong><p>投稿してみませんか？ </p></strong><a class="btn message" href="/posts/new">投稿する</a>
           <% end %>  
         <% end %>
       <% end %>
       
       <%= render partial: "posts/advice", locals: {posts: @posts}  %>
-      
+    
+      <div>
+        <h2><%= @user.name %>さんのお気に入り一覧</h2>
+        <% unless @favorite_posts.present? %>
+          <p><%= @user.name %>さんがお気に入り登録した投稿はまだありません。</p>
+        <% else %>
+            <%= render partial: "posts/advice", locals: {posts: @favorite_posts}  %>
+        <% end %>
+      </div>
       <% if current_user.present? %>
         <% if @user.id == current_user.id && @posts.present? %>
-          <p>投稿ありがとうございます！他にも投稿しませんか？➡︎ <%= link_to "投稿はこちらから", new_post_path, class: "standard-button" %></p>
+          <strong><p>投稿ありがとうございます！他にも投稿しませんか？</p></strong><a class="btn message" href="/posts/new">投稿する</a>
         <% end %>
       <% end %>
-      
+
   </div>
 </div>
