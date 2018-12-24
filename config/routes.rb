@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :comments
   end
   # deviseではshowのルーティングがない
-  resources :users, only: [:show]
+  resources :users
   resources :favorites, only: [:create, :destroy]
 
 end
