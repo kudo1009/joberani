@@ -37,7 +37,6 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     
     if @post.save
-     flash[:notice] = "投稿を作成しました"
      redirect_to @post
     else
      render :new
@@ -53,7 +52,6 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
     
     if @post.update(post_params)
-      flash[:notice] = "投稿を編集しました"
       redirect_to post_path
     else
       render :edit

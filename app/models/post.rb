@@ -5,6 +5,6 @@ class Post < ApplicationRecord
     validates :user_id, {presence: true}
     has_many :favorites, dependent: :destroy
     has_many :favorite_users, through: :favorites, source: :user
-    belongs_to :user, foreign_key: "post_id"
+    belongs_to :user
     has_many :comments, dependent: :destroy
 end

@@ -7,14 +7,11 @@ class CommentsController < ApplicationController
     
     def create
         @post = Post.find_by(id: params[:id])
-        @comment = @current_user.comments.build(comment_params)
-        @comment = @post.comments.build(comment_params)
+        @comment = current_user.comments.build(comment_params)
         @comment.post_id = @post.id
-        @comment.user_id = @current_user.id
-        @post = @comment.post
+        @comment.user_id = current_user.id
         if @comment.save
             render :index
-            format.js { render :index,notice: 'コメントが投稿されました' }
         end
     end
     
