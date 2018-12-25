@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     @favorite = current_user.favorites.find_by(post_id: @post.id) if user_signed_in?
     @favorites_count = Favorite.where(post_id: @post.id).count
     @comment = Comment.new
-    @comments = @post.comments.build
+    @comments = @post.comments
   end
   
   def new
