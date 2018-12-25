@@ -5,7 +5,6 @@ class PostsController < ApplicationController
   
   def index
     @post = Post.find_by(id: params[:id])
-    @posts = Post.all.order(created_at: :desc)
     @posts = Post.page(params[:page]).per(10)
     @favorite_ranking = Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(5).pluck(:post_id))
   end
@@ -20,7 +19,6 @@ class PostsController < ApplicationController
     @favorite = current_user.favorites.find_by(post_id: @post.id) if user_signed_in?
     @favorites_count = Favorite.where(post_id: @post.id).count
     @comment = Comment.new
-    @comments = @post.comments
     @comment = @post.comments.build
   end
   
