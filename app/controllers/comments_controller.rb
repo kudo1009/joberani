@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
   end
     
-  def commnet_params
+  def comment_params
     params.require(:comment).permit(:opinion, :post_id, :user_id)
   end
 end
