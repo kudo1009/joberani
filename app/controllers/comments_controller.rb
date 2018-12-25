@@ -1,34 +1,34 @@
 class CommentsController < ApplicationController
-    before_action :set_post, only: [:create, :destroy]
+  before_action :set_post, only: [:create, :destroy]
     
-    def new
-      @comment = Comment.new
+  def new
+    @comment = Comment.new
+  end
+    
+  def create
+    @post = Post.find(params[:post_id])
+    @comment = current_user.comments.build(comment_params)
+    @comment.post_id = @post.id
+    @comment.user_id = current_user.id
+    if @comment.save
+      render :index
     end
+  end
     
-    def create
-      @post = Post.find(params[:post_id])
-      @comment = current_user.comments.build(comment_params)
-      @comment.post_id = @post.id
-      @comment.user_id = current_user.id
-      if @comment.save
-        render :index
-      end
+  def destroy
+    @comment = Comment.find(params[:id])
+    if @comment.destroy
+      render :index
     end
+  end
     
-    def destroy
-      @comment = Comment.find(params[:id])
-      if @comment.destroy
-        render :index
-      end
-    end
+  private
     
-    private
+  def set_post
+    @post = Post.find(params[:post_id])
+  end
     
-    def set_post
-      @post = Post.find(params[:post_id])
-    end
-    
-    def commnet_params
-      params.require(:comment).permit(:opinion, :post_id, :user_id)
-    end
+  def commnet_params
+    params.require(:comment).permit(:opinion, :post_id, :user_id)
+  end
 end
