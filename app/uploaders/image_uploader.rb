@@ -12,9 +12,5 @@ class ImageUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
   
-  # デフォルト画像設定
-  #def default_url
-  #  "user.png"
-  #end
   
 end
