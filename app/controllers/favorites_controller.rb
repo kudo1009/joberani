@@ -9,13 +9,11 @@ class FavoritesController < ApplicationController
     
     def destroy
       set_favorite
-      set_post
       @favorite.destroy
       @favorite = nil
       favorites_count
       redirect_to posts_url
     end
-    
     
     private
     
@@ -30,5 +28,5 @@ class FavoritesController < ApplicationController
     def favorites_count
       @favorites_count = Favorite.where(post_id: @post.id).count
     end
-    
+
 end

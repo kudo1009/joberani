@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     @favorite = current_user.favorites.find_by(post_id: @post.id) if user_signed_in?
     @favorites_count = Favorite.where(post_id: @post.id).count
     @comment = Comment.new
-    @comment = @post.comments.build
+    @comments = @post.comments.build
   end
   
   def new
@@ -31,8 +31,7 @@ class PostsController < ApplicationController
   end
   
   def create
-    @post= Post.new(post_params)
-    @post.user_id = current_user.id
+    @post = current_user.posts.build(post_params)
     
     if @post.save
      flash[:notice] = "投稿を作成しました"
@@ -71,8 +70,6 @@ class PostsController < ApplicationController
     @current_user = current_user
     redirect_to posts_path, notice: '他のユーザーの投稿は編集できません。' unless view_context.current_user?(@user, @current_user)
   end
-  
-  
   
   private
   
